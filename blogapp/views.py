@@ -10,19 +10,19 @@ class BlogView(ListView):
 
 class BlogCreateWithFields(CreateView):
     model = BlogPost
-    form_class = BlogPostForm                    
+    form_class = BlogPostForm
     template_name = 'Posts/blogcreate.html'
     success_url = reverse_lazy('blog_list')
 
 class BlogUpdateView(UpdateView):
     model = BlogPost
-    form_class = BlogPostForm                      # <-- idem pour UpdateView
+    form_class = BlogPostForm
     pk_url_kwarg = 'pk'
     template_name = 'Posts/blogupdate.html'
-    success_url = reverse_lazy('posts:list')
+    success_url = reverse_lazy('blog_list')   # ✅ correction ici
 
 class BlogDeleteView(DeleteView):
     model = BlogPost
     pk_url_kwarg = 'pk'
     template_name = 'Posts/blogdelete.html'
-    success_url = reverse_lazy('posts:list')
+    success_url = reverse_lazy('blog_list')
